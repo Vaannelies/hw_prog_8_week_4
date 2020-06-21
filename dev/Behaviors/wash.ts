@@ -1,28 +1,34 @@
-class Wash implements Behavior {
+class Wash extends Behavior {
 
-    private jibby : Jibby
+    public timer : number
 
     constructor(jibby : Jibby) {
-        this.jibby = jibby
-    }
-    public performBehavior(): void {
+        super(jibby)
+        this.timer = 100
         console.log("washing jibby!")
         this.jibby.div.style.backgroundImage = "url('images/washing.png')"
         this.jibby.hygiene += 10
         this.jibby.happyness += 5
     }
-    public onWash(): void {
-        throw new Error("Method not implemented.");
+  
+    onPet():void {
+        console.log("Hey!!!")
+        this.jibby._behavior = new Angry(this.jibby)
     }
-    public onEat(): void {
-        throw new Error("Method not implemented.");
+
+    onWash():void {
+        
     }
-    public onPet(): void {
-        throw new Error("Method not implemented.");
+
+    onEat():void {
+     
     }
+
 
     public update() {
         this.performBehavior()
+          
+  
     }
 
 }
